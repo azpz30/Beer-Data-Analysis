@@ -1,14 +1,4 @@
--- COMP3311 22T3 Assignment 1
---
--- Fill in the gaps ("...") below with your code
--- You can add any auxiliary views/function that you like
--- The code in this file *MUST* load into an empty database in one pass
--- It will be tested as follows:
--- createdb test; psql test -f ass1.dump; psql test -f ass1.sql
--- Make sure it can load without error under these conditions
-
-
--- Q1: new breweries in Sydney in 2020
+-- new breweries in Sydney in 2020
 
 create or replace view Q1(brewery,suburb)
 as
@@ -18,7 +8,7 @@ from Breweries b
 Where b.founded = 2020 and l.metro = 'Sydney'
 ;
 
--- Q2: beers whose name is same as their style
+-- beers whose name is same as their style
 
 create or replace view Q2(beer,brewery)
 as
@@ -30,7 +20,7 @@ from Beers b
 Where s.name = b.name
 ;
 
--- Q3: original Californian craft brewery
+-- original Californian craft brewery
 
 create or replace view h3(brewery,founded)
 as
@@ -47,7 +37,7 @@ from h3
 Where founded = (select min(founded) from h3)
 ;
 
--- Q4: all IPA variations, and how many times each occurs
+-- all IPA variations, and how many times each occurs
 
 create or replace view Q4(style,count)
 as
@@ -57,7 +47,7 @@ group by s.name
 having s.name like '%IPA%'
 ;
 
--- Q5: all Californian breweries, showing precise location
+-- all Californian breweries, showing precise location
 
 create or replace view h5(brewery,location_id)
 as
@@ -85,7 +75,7 @@ from met_tow
 Where town is not null
 ;
 
--- Q6: strongest barrel-aged beer
+-- strongest barrel-aged beer
 
 create or replace view beer_and_brew(beer, brewery, s, s_id)
 as
@@ -113,7 +103,7 @@ from h6 h
 where h.abv = (select max(abv) from h6)
 ;
 
--- Q7: most popular hop
+-- most popular hop
 
 create or replace view h7(ing,num)
 as
@@ -130,7 +120,7 @@ from h7
 where num = (select max(num) from h7)
 ;
 
--- Q8: breweries that don't make IPA or Lager or Stout (any variation thereof)
+-- breweries that don't make IPA or Lager or Stout (any variation thereof)
 
 create or replace view Q8(brewery)
 as
@@ -144,7 +134,7 @@ or bb.s like '%Lager%'
 or bb.s like '%Stout%'
 ;
 
--- Q9: most commonly used grain in Hazy IPAs
+-- most commonly used grain in Hazy IPAs
 
 create or replace view HIB(beer,num)
 as
@@ -171,7 +161,7 @@ from h9
 where num = (select max(num) from h9)
 ;
 
--- Q10: ingredients not used in any beer
+-- ingredients not used in any beer
 
 create or replace view ing_unused(ing_id)
 as
@@ -189,7 +179,7 @@ from Ingredients i
 	join ing_unused iu on (iu.ing_id = i.id)
 ;
 
--- Q11: min/max abv for a given country
+-- min/max abv for a given country
 
 drop type if exists ABVrange cascade;
 create type ABVrange as (minABV float, maxABV float);
@@ -228,7 +218,7 @@ end;
 $$
 language plpgsql;
 
--- Q12: details of beers
+-- details of beers
 
 drop type if exists BeerData cascade;
 create type BeerData as (beer text, brewer text, info text);
