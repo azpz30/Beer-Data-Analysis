@@ -4,7 +4,7 @@
 
 This project focuses on analyzing a small relational database called "BeerDB" with the goal of extracting useful information about the world of beer. The database contains various entities related to breweries, beers, ingredients, and more. The project involves writing SQL queries and views to satisfy specific information requests and implementing PLpgSQL functions to support higher-level activities, potentially in a web interface.
 
-<img width="929" alt="Attributes of Entities" src="https://github.com/azpz30/Beer-Data-Analysis/assets/76789643/3ce15ec8-96a5-480f-aea3-d48df0e0bb75">
+<img width="929" alt="Attributes of Entities" src="https://github.com/azpz30/Beer-Data-Analysis/assets/76789643/943f9b54-0644-4915-bf26-d9586e72f408">
 
 
 **Project Objectives**:
